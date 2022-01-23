@@ -1,0 +1,214 @@
+2022-01-23 19:33:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLES" не найдена
+Table "ROLES" not found; SQL statement:
+CREATE TABLE users (id INT NOT NULL PRIMARY KEY, role_id INT NOT NULL, login VARCHAR(256) NOT NULL, password VARCHAR(256) NOT NULL,email VARCHAR(256) NOT NULL,firstName VARCHAR(256) NOT NULL,lastName VARCHAR(256) NOT NULL,birthday DATE NOT NULL,FOREIGN KEY (role_id) REFERENCES roles(role_id)) [42102-206]
+2022-01-23 20:06:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Невозможно удалить "ROLES", пока существует зависимый объект "CONSTRAINT_4D4"
+Cannot drop "ROLES" because "CONSTRAINT_4D4" depends on it; SQL statement:
+DROP TABLE IF EXISTS roles [90107-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:651)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:123)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:173)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:190)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:143)
+	at com.example.drop.DropTables.dropTableRoles(DropTables.java:24)
+	at com.example.app.Main.main(Main.java:11)
+2022-01-23 20:58:18 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.get(DbException.java:216)
+	at org.h2.message.DbException.convert(DbException.java:414)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3292)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:585)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:461)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4052)
+	at org.h2.mvstore.db.Store.<init>(Store.java:129)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:117)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.connection.ConnectionClass.getConnection(ConnectionClass.java:19)
+	at com.example.drop.DropTables.dropTableUsers(DropTables.java:15)
+	at com.example.app.Main.main(Main.java:11)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	... 20 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:163)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
+	... 14 more
+2022-01-23 20:58:48 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.get(DbException.java:216)
+	at org.h2.message.DbException.convert(DbException.java:414)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3292)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:585)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:461)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4052)
+	at org.h2.mvstore.db.Store.<init>(Store.java:129)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:117)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.connection.ConnectionClass.getConnection(ConnectionClass.java:19)
+	at com.example.drop.DropTables.dropTableUsers(DropTables.java:15)
+	at com.example.app.Main.main(Main.java:11)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	... 20 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:163)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
+	... 14 more
+2022-01-23 20:59:01 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.get(DbException.java:216)
+	at org.h2.message.DbException.convert(DbException.java:414)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3292)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:585)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:461)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4052)
+	at org.h2.mvstore.db.Store.<init>(Store.java:129)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:117)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.connection.ConnectionClass.getConnection(ConnectionClass.java:19)
+	at com.example.drop.DropTables.dropTableUsers(DropTables.java:15)
+	at com.example.app.Main.main(Main.java:11)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	... 20 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:163)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
+	... 14 more
+2022-01-23 21:06:28 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.get(DbException.java:216)
+	at org.h2.message.DbException.convert(DbException.java:414)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3292)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:585)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:461)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4052)
+	at org.h2.mvstore.db.Store.<init>(Store.java:129)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:117)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.connection.ConnectionClass.getConnection(ConnectionClass.java:19)
+	at com.example.connection.ConnectionClass.main(ConnectionClass.java:25)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	... 19 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:163)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
+	... 13 more
+2022-01-23 21:06:48 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.get(DbException.java:216)
+	at org.h2.message.DbException.convert(DbException.java:414)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3292)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:585)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:461)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4052)
+	at org.h2.mvstore.db.Store.<init>(Store.java:129)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:117)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.connection.ConnectionClass.getConnection(ConnectionClass.java:19)
+	at com.example.connection.ConnectionClass.main(ConnectionClass.java:25)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	... 19 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:163)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
+	... 13 more
+2022-01-23 21:17:26 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.get(DbException.java:216)
+	at org.h2.message.DbException.convert(DbException.java:414)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3292)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:585)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:461)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4052)
+	at org.h2.mvstore.db.Store.<init>(Store.java:129)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:117)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.connection.ConnectionClass.getConnection(ConnectionClass.java:19)
+	at com.example.connection.ConnectionClass.main(ConnectionClass.java:25)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]" [50000-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	... 19 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Nix-Jun/jdbc/database.mv.db.mv.db [2.0.206/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:163)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
+	... 13 more
